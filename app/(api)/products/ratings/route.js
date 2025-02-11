@@ -10,12 +10,16 @@ export async function POST(req) {
     const { productId, userId, rating, review } = await req.json();
     if (!(productId && userId && rating)) {
       return NextResponse.json(
-        { message: "necessary fields are missing.", success: false },
-        { status: 404 }
+        { message: "Necessary fields are missing.", success: false },
+        { status: 400 }
       );
     }
     await dbConnect();
-    const alreadyRated = await Rating.findOne({ productId, userId });
+
+    const alreadyRated = await Rating.findOne({
+      productId,
+      userId,
+    });
     if (alreadyRated) {
       return NextResponse.json(
         {
@@ -26,19 +30,26 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    // Check if the product has been ordered by the user
-    const isProductOrdered = await Orders.findOne({
-      userId: userId,
+
+    // Check if the product has been ordered by the user and delivered
+    const orders = await Orders.find({
+      userId,
       "items.product": productId,
-      status: "delivered",
+      "items.status": "delivered",
     });
 
-    console.log(isProductOrdered);
-    if (!isProductOrdered) {
+    const isProductDelivered = orders.some((order) =>
+      order.items.some(
+        (item) =>
+          item.product.toString() === productId && item.status === "delivered"
+      )
+    );
+
+    if (!isProductDelivered) {
       return NextResponse.json(
         {
           message:
-            "Either you don't buy this product or your product is not delivered yet. Wait for your product delivery to review",
+            "Either you didn't buy this product or your product is not delivered yet. Wait for your product delivery to review.",
           success: false,
         },
         { status: 400 }
@@ -46,14 +57,14 @@ export async function POST(req) {
     }
 
     const newRating = new Rating({
-      productId,
-      userId,
+     productId,
+   userId,
       rating,
       review,
     });
     await newRating.save();
-    const findRating = await Rating.find({ productId });
-    console.log("findRating", findRating);
+
+    const findRating = await Rating.find({  productId });
     const averageRating =
       findRating && findRating.length > 0
         ? findRating.reduce(
@@ -61,13 +72,15 @@ export async function POST(req) {
             0
           ) / findRating.length
         : 0;
-    console.log("averageRating", averageRating);
+
     await Product.findByIdAndUpdate(productId, { rating: averageRating });
+
     return NextResponse.json(
       { newRating, success: true, message: "Review submitted" },
       { status: 201 }
     );
   } catch (error) {
+    console.error("Error creating rating:", error);
     return NextResponse.json(
       {
         message: "Failed to create rating",
@@ -79,6 +92,7 @@ export async function POST(req) {
   }
 }
 
+// GET: Fetch ratings for a product
 export async function GET(req) {
   try {
     const url = new URL(req.url);
@@ -89,11 +103,11 @@ export async function GET(req) {
     await dbConnect();
     const rating = await Rating.find({ productId })
       .populate({
-        path: "productId",
+        path: "product",
         select: "_id",
       })
       .populate({
-        path: "userId",
+        path: "user",
         select: "email",
       });
     if (!rating) {
@@ -102,6 +116,7 @@ export async function GET(req) {
 
     return NextResponse.json(rating, { status: 200 });
   } catch (error) {
+    console.error("Error fetching rating:", error);
     return NextResponse.json(
       {
         message: "Failed to fetch rating",

@@ -124,6 +124,7 @@ const Checkout = ({ userId }) => {
         toast.success(data.message || "Order successfull");
         setSelectedAddress(null);
         queryClient.invalidateQueries(["userOrders", userId]);
+        queryClient.invalidateQueries(["cartData", userId]);
         router.push(`/orders/${data.order.userId}`);
       }
     },

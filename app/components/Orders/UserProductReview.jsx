@@ -181,9 +181,9 @@ const UserProductReview = ({ productId, userId }) => {
     mutateDeleteReview(ratingId);
     setIsDeleteDialogOpen(false);
   };
-  const ratingChanged = (newRating) => {
-    setUserRating(newRating);
-  };
+  // const ratingChanged = (newRating) => {
+  //   setUserRating(newRating);
+  // };
 
   return (
     <div className="w-full py-5">
@@ -197,8 +197,8 @@ const UserProductReview = ({ productId, userId }) => {
               <div className="px-2 py-3 flex flex-col items-start gap-4">
                 <ReactStars
                   count={5}
-                  // value={newRating}
-                  onChange={ratingChanged}
+                  value={userRating}
+                  onChange={setUserRating}
                   size={40}
                   half={false}
                   color2={"#ffd700"}
