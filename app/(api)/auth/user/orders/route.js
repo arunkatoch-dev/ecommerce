@@ -70,7 +70,6 @@ export async function POST(request) {
   <div>
       <h2>Order Details</h2>
       <p><strong>Order ID:</strong> ${newOrder._id}</p>
-      <p><strong>Status:</strong> ${newOrder.status}</p>
       <p><strong>Payment Method:</strong> ${newOrder.paymentMethod}</p>
       <p><strong>Order Date:</strong> ${new Date(
         newOrder.createdAt
@@ -83,6 +82,7 @@ export async function POST(request) {
           <p><strong>${item.product.title}</strong></p>
           <p>Size: ${item.size}</p>
           <p>Quantity: ${item.quantity}</p>
+             <p><strong>Status:</strong> ${item.status}</p>
           <p>Price: <strong>₹${
             item.price - (item.price * item.discount) / 100
           }</strong> 
