@@ -1,12 +1,45 @@
-import HomepageBrowseByBanner from "./components/Banners/HomepageBrowseByBanner";
-import BrandsBoard from "./components/BrandsShowCase/BrandsBoard";
-import Hero from "./components/Hero/Hero";
-import Footer from "./components/Homepage/Footer";
-import HappyCustomers from "./components/Homepage/HappyCustomers";
-import SignupPopup from "./components/Homepage/SignupPopup";
-import Navbar from "./components/Navbar/Navbar";
-import NewArrivals from "./components/NewArrivals/NewArrivals";
-import TopSelling from "./components/topselling/TopSelling";
+import dynamic from "next/dynamic";
+import Loader from "./components/Loader/Loader";
+
+const HomepageBrowseByBanner = dynamic(
+  () => import("./components/Banners/HomepageBrowseByBanner"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const BrandsBoard = dynamic(
+  () => import("./components/BrandsShowCase/BrandsBoard"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const Hero = dynamic(() => import("./components/Hero/Hero"), {
+  loading: () => <Loader />,
+});
+const Footer = dynamic(() => import("./components/Homepage/Footer"), {
+  loading: () => <Loader />,
+});
+const HappyCustomers = dynamic(
+  () => import("./components/Homepage/HappyCustomers"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const SignupPopup = dynamic(() => import("./components/Homepage/SignupPopup"), {
+  loading: () => <Loader />,
+});
+const Navbar = dynamic(() => import("./components/Navbar/Navbar"), {
+  loading: () => <Loader />,
+});
+const NewArrivals = dynamic(
+  () => import("./components/NewArrivals/NewArrivals"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const TopSelling = dynamic(() => import("./components/topselling/TopSelling"), {
+  loading: () => <Loader />,
+});
 
 export default function Home() {
   return (

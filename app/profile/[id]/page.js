@@ -1,7 +1,19 @@
+import Loader from "@/app/components/Loader/Loader";
+import dynamic from "next/dynamic";
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import UserProfile from "../../components/Profile/UserProfile";
-import Footer from "../../components/Homepage/Footer";
+
+const UserProfile = dynamic(
+  () => import("../../components/Profile/UserProfile"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const Navbar = dynamic(() => import("../../components/Navbar/Navbar"), {
+  loading: () => <Loader />,
+});
+const Footer = dynamic(() => import("../../components/Homepage/Footer"), {
+  loading: () => <Loader />,
+});
 
 const userProfilePage = async ({ params }) => {
   const _id = (await params).id;

@@ -1,7 +1,11 @@
-import Cart from "../components/cartComponents/Cart";
+import dynamic from "next/dynamic";
+import Loader from "../components/Loader/Loader";
 
-const cart = () => {
+const Cart = dynamic(() => import("../components/cartComponents/Cart"), {
+  loading: () => <Loader />,
+});
+const CartPage = () => {
   return <Cart />;
 };
 
-export default cart;
+export default CartPage;

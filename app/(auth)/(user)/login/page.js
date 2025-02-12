@@ -1,7 +1,12 @@
-import UserLogin from "@/app/components/auth/UserLogin";
+import Loader from "@/app/components/Loader/Loader";
+import dynamic from "next/dynamic";
 
-const login = () => {
+const UserLogin = dynamic(() => import("@/app/components/auth/UserLogin"), {
+  loading: () => <Loader />,
+});
+
+const Login = () => {
   return <UserLogin />;
 };
 
-export default login;
+export default Login;

@@ -5,7 +5,9 @@ import Error from "../Error/Error";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import StarRating from "../StarRatings/StarRating";
+const StarRating = dynamic(() => import("../StarRatings/StarRating"), {
+  loading: () => <Loader />,
+});
 import { MdEdit, MdDelete } from "react-icons/md";
 import {
   Dialog,

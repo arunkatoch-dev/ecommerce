@@ -1,7 +1,15 @@
-import Footer from "@/app/components/Homepage/Footer";
-import Navbar from "@/app/components/Navbar/Navbar";
-import Whishlist from "@/app/components/Whishlist/Wishlist";
-import React from "react";
+import Loader from "@/app/components/Loader/Loader";
+import dynamic from "next/dynamic";
+
+const Whishlist = dynamic(() => import("@/app/components/Whishlist/Wishlist"), {
+  loading: () => <Loader />,
+});
+const Navbar = dynamic(() => import("@/app/components/Navbar/Navbar"), {
+  loading: () => <Loader />,
+});
+const Footer = dynamic(() => import("@/app/components/Homepage/Footer"), {
+  loading: () => <Loader />,
+});
 
 const WhishListPage = async ({ params }) => {
   const user = (await params).user;

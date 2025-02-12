@@ -31,7 +31,6 @@ const Cart = () => {
       </>
     );
   }
-  console.log(cartData);
   return (
     <>
       <Navbar />

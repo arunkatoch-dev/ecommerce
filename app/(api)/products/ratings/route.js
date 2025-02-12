@@ -58,7 +58,7 @@ export async function POST(req) {
 
     const newRating = new Rating({
      productId,
-   userId,
+      userId,
       rating,
       review,
     });
@@ -103,11 +103,11 @@ export async function GET(req) {
     await dbConnect();
     const rating = await Rating.find({ productId })
       .populate({
-        path: "product",
+        path: "productId",
         select: "_id",
       })
       .populate({
-        path: "user",
+        path: "userId",
         select: "email",
       });
     if (!rating) {
