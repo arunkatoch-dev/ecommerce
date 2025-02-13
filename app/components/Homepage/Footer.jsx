@@ -88,7 +88,7 @@ const Footer = () => {
             alt="payment methods Logos"
             fill
             style={{ objectFit: "contain" }}
-            priority
+            loading="lazy"
             sizes="281px"
           />
         </div>

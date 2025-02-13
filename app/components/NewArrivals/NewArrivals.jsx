@@ -44,7 +44,7 @@ const NewArrivals = () => {
                         alt={product.title}
                         fill
                         style={{ objectFit: "contain", borderRadius: "15px" }}
-                        priority
+                        loading="lazy"
                         sizes="295px"
                       />
                     </div>

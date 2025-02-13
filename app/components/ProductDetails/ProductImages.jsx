@@ -18,7 +18,7 @@ const ProductImages = ({ productImages }) => {
             src={zoomedImage || "/placeholder.jpg"}
             alt="product-zoomed-image"
             fill
-            priority
+            loading="lazy"
             className="object-cover rounded-lg"
             sizes="500px"
           />
@@ -37,7 +37,7 @@ const ProductImages = ({ productImages }) => {
                   src={image.url || "/placeholder.jpg"}
                   alt="product-thumbnail"
                   fill
-                  priority
+                  loading="lazy"
                   className="object-cover rounded-lg"
                   sizes="80px"
                 />
@@ -59,7 +59,7 @@ const ProductImages = ({ productImages }) => {
                 src={image.url || "/placeholder.jpg"}
                 alt="product-thumbnail"
                 fill
-                priority
+                loading="lazy"
                 className="object-cover rounded-lg"
                 sizes="120px"
               />

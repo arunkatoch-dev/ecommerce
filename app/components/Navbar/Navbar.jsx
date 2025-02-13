@@ -68,6 +68,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
+            prefetch={true}
             className="text-lg lg:text-3xl text-black uppercase font-bold"
           >
             Shop.co
@@ -81,22 +82,22 @@ const Navbar = () => {
               : "hidden"
           }`}
         >
-          <Link href="/topselling">
+          <Link href="/topselling" prefetch={true}>
             <li className="cursor-pointer text-black hover:text-black/70 text-base">
               Shop
             </li>
           </Link>
-          <Link href="/newarrivals">
+          <Link href="/newarrivals" prefetch={true}>
             <li className="cursor-pointer text-black hover:text-black/70 text-base">
               On Sale
             </li>
           </Link>
-          <Link href="/newarrivals">
+          <Link href="/newarrivals" prefetch={true}>
             <li className="cursor-pointer text-black hover:text-black/70 text-base">
               New Arrivals
             </li>
           </Link>
-          <Link href="/topselling">
+          <Link href="/topselling" prefetch={true}>
             <li className="cursor-pointer text-black hover:text-black/70 text-base">
               Brands
             </li>
@@ -111,7 +112,7 @@ const Navbar = () => {
             className="w-6 h-6 text-black hover:text-black/70 cursor-pointer lg:hidden"
             onClick={() => setIsSearchBarOpen(!isSearchBarOpen)}
           />
-          <Link href="/cart">
+          <Link href="/cart" prefetch={true} aria-label="go to cart">
             <div className="relative">
               <IoCartOutline className="w-6 h-6 text-black hover:text-black/70 cursor-pointer" />
               {cartData?.cart?.items?.length > 0 && (
@@ -131,13 +132,23 @@ const Navbar = () => {
             ) : userData?.user?._id ? (
               <DropdownMenuContent>
                 <DropdownMenuItem>
-                  <Link href={`/profile/${userData?.user?._id}`}>Profile</Link>
+                  <Link
+                    href={`/profile/${userData?.user?._id}`}
+                    prefetch={true}
+                  >
+                    Profile
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={`/orders/${userData?.user?._id}`}>Orders</Link>
+                  <Link href={`/orders/${userData?.user?._id}`} prefetch={true}>
+                    Orders
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={`/userwhishlist/${userData?.user?._id}`}>
+                  <Link
+                    href={`/userwhishlist/${userData?.user?._id}`}
+                    prefetch={true}
+                  >
                     WishList
                   </Link>
                 </DropdownMenuItem>
@@ -156,10 +167,14 @@ const Navbar = () => {
             ) : (
               <DropdownMenuContent>
                 <DropdownMenuItem>
-                  <Link href="/login">Login</Link>
+                  <Link href="/login" prefetch={true}>
+                    Login
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href="/signup">Sign Up</Link>
+                  <Link href="/signup" prefetch={true}>
+                    Sign Up
+                  </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             )}

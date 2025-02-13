@@ -8,6 +8,7 @@ const BrandsBoard = () => {
           src="/brands/versace-logo.png"
           alt="versace logo"
           fill
+          loading="lazy"
           style={{ objectFit: "contain" }}
           sizes="168px"
         />
@@ -17,6 +18,7 @@ const BrandsBoard = () => {
           src="/brands/zara-logo.png"
           alt="zara logo"
           fill
+          loading="lazy"
           style={{ objectFit: "contain" }}
           sizes="91px"
         />
@@ -26,6 +28,7 @@ const BrandsBoard = () => {
           src="/brands/gucci-logo.png"
           alt="gucci logo"
           fill
+          loading="lazy"
           style={{ objectFit: "contain" }}
           sizes="156px"
         />
@@ -35,6 +38,7 @@ const BrandsBoard = () => {
           src="/brands/prada-logo.png"
           alt="prada logo"
           fill
+          loading="lazy"
           style={{ objectFit: "contain" }}
           sizes="194px"
         />
@@ -44,6 +48,7 @@ const BrandsBoard = () => {
           src="/brands/calvinklein-logo.png"
           alt="calvin klein logo"
           fill
+          loading="lazy"
           style={{ objectFit: "contain" }}
           sizes="206px"
         />

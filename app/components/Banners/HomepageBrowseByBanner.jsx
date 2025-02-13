@@ -14,7 +14,7 @@ const HomepageBrowseByBanner = () => {
               <Image
                 src="/dressStyles/casual.png"
                 alt="casual"
-                priority
+                loading="lazy"
                 fill
                 style={{ objectFit: "contain", borderRadius: "15px" }}
                 sizes="395px"
@@ -24,8 +24,8 @@ const HomepageBrowseByBanner = () => {
               <Image
                 src="/dressStyles/formal.png"
                 alt="formal"
-                priority
                 fill
+                loading="lazy"
                 style={{ objectFit: "contain", borderRadius: "15px" }}
                 sizes="670px"
               />
@@ -36,7 +36,7 @@ const HomepageBrowseByBanner = () => {
               <Image
                 src="/dressStyles/party.png"
                 alt="party"
-                priority
+                loading="lazy"
                 fill
                 style={{ objectFit: "contain", borderRadius: "15px" }}
                 sizes="670px"
@@ -46,7 +46,7 @@ const HomepageBrowseByBanner = () => {
               <Image
                 src="/dressStyles/gym.png"
                 alt="gym"
-                priority
+                loading="lazy"
                 fill
                 style={{ objectFit: "contain", borderRadius: "15px" }}
                 sizes="395px"
