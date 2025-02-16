@@ -148,3 +148,9 @@ TO Do's: There are many sections of this project which can be improved and may b
 
 Checkout my portfolio for more:
 https://arunkatoch-dev.vercel.app/
+
+Use these credentials for testing purposes:
+email: tester@gmail.com
+password: Tester@123
+
+( Credentials are same for both user and seller)
