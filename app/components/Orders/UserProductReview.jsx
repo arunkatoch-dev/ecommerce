@@ -5,6 +5,7 @@ import Error from "../Error/Error";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import dynamic from "next/dynamic";
 const StarRating = dynamic(() => import("../StarRatings/StarRating"), {
   loading: () => <Loader />,
 });
