@@ -20,6 +20,19 @@ export async function POST(request) {
       );
     }
 
+    // Password validation (must match frontend)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+    if (!passwordRegex.test(password)) {
+      return NextResponse.json(
+        {
+          message:
+            "Password must be 8-12 chars, include 1 special char, 1 lowercase, 1 uppercase, and numbers.",
+          success: false,
+        },
+        { status: 400 }
+      );
+    }
+
     await dbConnect();
 
     const findSeller = await Seller.findOne({ email });
@@ -94,7 +107,6 @@ export async function POST(request) {
       {
         message: "Some error occurred",
         success: false,
-        error: error.message,
       },
       { status: 500 }
     );

@@ -40,7 +40,7 @@ const Navbar = () => {
         toast.error(data.message || "Something went wrong");
       } else {
         toast.success(data.message || "Logout successful");
-        queryClient.invalidateQueries(["userData"]);
+        queryClient.invalidateQueries();
         router.push("/login");
       }
     },

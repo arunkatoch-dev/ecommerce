@@ -162,6 +162,7 @@ const Checkout = ({ userId }) => {
             "userOrders",
             data.order.userId,
           ]);
+          queryClient.invalidateQueries(["cartData", data.order.userId]);
           router.push(`/orders/${data.order.userId}`);
         }
       },

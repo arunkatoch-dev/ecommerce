@@ -100,10 +100,7 @@ export async function POST(request) {
           <p><strong>${item.product.title}</strong></p>
           <p>Size: ${item.size}</p>
           <p>Quantity: ${item.quantity}</p>
-          <p>Price: <strong>₹${
-            item.price - (item.price * item.discount) / 100
-          }</strong> 
-            <del>₹${item.price}</del> (-${item.discount}%)</p>
+          <p>Price: <strong>₹${item.price - (item.price * item.discount) / 100}</strong> <del>₹${item.price}</del> (-${item.discount}%)</p>
         </div>
       `
         )

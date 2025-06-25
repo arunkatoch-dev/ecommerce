@@ -18,6 +18,18 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+    // Password validation (must match frontend)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+    if (!passwordRegex.test(password)) {
+      return NextResponse.json(
+        {
+          message:
+            "Password must be 8-12 chars, include 1 special char, 1 lowercase, 1 uppercase, and numbers.",
+          success: false,
+        },
+        { status: 400 }
+      );
+    }
     if (password !== confirmPassword) {
       return NextResponse.json(
         {
@@ -91,7 +103,6 @@ export async function POST(request) {
       {
         message: "Error registering user",
         success: false,
-        error: error.message,
       },
       { status: 500 }
     );
